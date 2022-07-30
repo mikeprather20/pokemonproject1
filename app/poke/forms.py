@@ -21,3 +21,5 @@ class LoginForm(FlaskForm):
     password = PasswordField('Password', validators=[DataRequired()])
     submit = SubmitField()
 
+#class EditProfile(FlaskForm):
+    

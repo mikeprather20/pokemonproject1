@@ -11,7 +11,7 @@ poke = Blueprint('poke', __name__, template_folder='poke_template')
 
 from app.models import db
 
-####################################
+##################################################################
 
 @poke.route('/pokemon', methods = ['GET', 'POST'])
 def pokedex():
@@ -37,7 +37,7 @@ def pokedex():
     return render_template('pokemon.html', form = form, pokemon = my_dict)
 
 
-################################
+##############################################################
 
 
 @poke.route('/login',methods = ["GET","POST"] )
@@ -68,7 +68,7 @@ def logOut():
 
 
 
-################################
+##############################################################
 
 
 @poke.route('/register', methods=["GET", "POST"])
@@ -91,3 +91,10 @@ def register():
         else:
             flash('Please fill in all requirements!', 'danger')
     return render_template('register.html', form = form)
+
+##########################################################################
+
+
+@poke.route('/editprofile')
+def editProfile():
+    return render_template('editprofile.html')
