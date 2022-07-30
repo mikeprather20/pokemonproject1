@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+  
+{% block content %}
+
+<h1>POKE'MON!</h1>
+<br>
+
+<form class="container" method="POST">
+
+    {{ form.hidden_tag() }}
+    {{ form.name(class='form-control', placeholder='Pokemon Name') }}
+<br>
+    {{ form.submit(class='btn btn-primary') }}
+
+</form>
+
+<br>
+{% if pokemon %}
+
+<div class="card" style="width: 18rem;">
+  <img src="{{ pokemon.img_url }}" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">{{ pokemon.name.title() }}</h5>
+    <p class="card-text">
+        <ul>
+          <li>
+            Ability: {{ pokemon.ability.title() }}
+            <br>
+            HP: {{ pokemon.hp }}
+            <br>
+            ATK: {{ pokemon.attack }}
+            <br>
+            DEF: {{ pokemon.defense }}
+          </li>
+        </ul>
+    </p>
+  </div>
+</div>
+
+{% endif %}
+
+
+
+
+<br>
+<ul class="nav">
+    <li class="nav-item">
+      <a class="nav-link active" aria-current="page" href="/">Go Back Home</a>
+    </li>
+  </ul>
+
+
+{% endblock %}
