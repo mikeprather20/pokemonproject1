@@ -10,6 +10,8 @@ user = Blueprint('user', __name__, template_folder='usertemplates')
 
 from app.models import db
 
+##########################################################################
+
 
 @user.route('/login',methods = ["GET","POST"] )
 def logIn():
@@ -66,6 +68,17 @@ def register():
 ##########################################################################
 
 
+@user.route('/profile')
+def profile():
+    return render_template('profile.html')
+
+
+##########################################################################
+
+
 @user.route('/editprofile')
 def editProfile():
     return render_template('editprofile.html')
+
+
+##########################################################################

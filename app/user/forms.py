@@ -18,5 +18,10 @@ class LoginForm(FlaskForm):
     password = PasswordField('Password', validators=[DataRequired()])
     submit = SubmitField()
 
+
+#class Profile(FlaskForm):
+
+
+
 #class EditProfile(FlaskForm):
     
