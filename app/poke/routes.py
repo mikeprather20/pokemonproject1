@@ -71,11 +71,10 @@ def logOut():
 ################################
 
 
-@poke.route('/register')
+@poke.route('/register', methods=["GET", "POST"])
 def register():
-    form = LoginForm()
+    form = UserRegistrationForm()
     if request.method == "POST":
-        print('POST request made')
         if form.validate():
             username = form.username.data
             first_name = form.first_name.data
