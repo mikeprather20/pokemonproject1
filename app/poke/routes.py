@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, request
-from .forms import pokemonForm
+from .forms import PokemonFinderForm
 import requests
 
 #from app.models import Pokemon
@@ -10,7 +10,7 @@ poke = Blueprint('poke', __name__, template_folder='poke_template')
 
 @poke.route('/pokemon', methods = ['GET', 'POST'])
 def pokedex():
-    form = pokemonForm()
+    form = PokemonFinderForm()
     my_dict = {}
 
     if request.method == "POST":
@@ -28,8 +28,6 @@ def pokedex():
                 'attack': data['stats'][1]['base_stat'],
                 'defense': data['stats'][2]['base_stat']
             }
-        else:
-            return "ERROR"
 
     return render_template('pokemon.html', form = form, pokemon = my_dict)
 
