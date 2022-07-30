@@ -4,6 +4,7 @@ from flask_migrate import Migrate
 from flask_login import LoginManager
 
 from .poke.routes import poke
+from .user.routes import user
 from .models import User
 
 app = Flask(__name__)
@@ -14,6 +15,7 @@ def load_user(user_id):
     return User.query.get(user_id)
 
 app.register_blueprint(poke)
+app.register_blueprint(user)
 
 app.config.from_object(Config)
 
