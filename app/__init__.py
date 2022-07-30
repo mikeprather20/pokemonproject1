@@ -1,21 +1,26 @@
 from flask import Flask
 from config import Config
-#from flask_migrate import Migrate
+from flask_migrate import Migrate
+from flask_login import LoginManager
 
 from .poke.routes import poke
 
 app = Flask(__name__)
+login = LoginManager()
 
+@login.user_loader
+def load_user(user_id):
+    return User.query.get(user_id)
 
 app.register_blueprint(poke)
 
 app.config.from_object(Config)
 
+from .models import db
 
-#from .models import db
-
-#db.init_app(app)
-#migrate = Migrate(app,db)
+db.init_app(app)
+migrate = Migrate(app,db)
+login.init_app(app)
 
 from . import routes
-#from . import models
+from . import models
