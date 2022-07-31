@@ -65,19 +65,3 @@ def register():
             flash('Please fill in all requirements!', 'danger')
     return render_template('register.html', form = form)
 
-##########################################################################
-
-@auth.route('/profile')
-def userProfile():
-    return render_template('profile.html')
-
-
-##########################################################################
-
-
-@auth.route('/editprofile')
-def editProfile():
-    return render_template('editprofile.html')
-
-
-##########################################################################

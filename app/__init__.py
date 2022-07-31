@@ -5,6 +5,7 @@ from flask_login import LoginManager
 
 from .poke.routes import poke
 from .auth.routes import auth
+from .prof.routes import prof
 from .models import User
 
 app = Flask(__name__)
@@ -16,6 +17,7 @@ def load_user(user_id):
 
 app.register_blueprint(poke)
 app.register_blueprint(auth)
+app.register_blueprint(prof)
 
 app.config.from_object(Config)
 
