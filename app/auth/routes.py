@@ -37,7 +37,7 @@ def logIn():
 def logOut():
     flash("You logged out.", 'success')
     logout_user()
-    return redirect(url_for('poke.logIn'))
+    return redirect(url_for('auth.logIn'))
 
 
 
