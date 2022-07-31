@@ -20,17 +20,20 @@ class User(db.Model, UserMixin):
         self.password = generate_password_hash(password)
 
 #class Pokemon(db.Model):
-    # name = db.Column(db.String(50), primary_key=True)
-    # hp_stat = db.Column(db.Integer)
-    # def_stat = db.Column(db.Integer)
-    # atk_stat = db.Column(db.Integer)
+    # id = db.Column(db.Integer, primary_key=True)
     # poke_img = db.Column(db.String(300))
+    # name = db.Column(db.String(50)
     # ability = db.Column(db.String(50))
+    # hp_stat = db.Column(db.Integer)
+    # atk_stat = db.Column(db.Integer)
+    # def_stat = db.Column(db.Integer)
+    
 
-    # def __init__(self, name, hp_stat, def_stat, atk_stat, poke_img, ability):
-    #     self.name = name
-    #     self.hp_stat = hp_stat
-    #     self.def_stat = def_stat
-    #     self.atk_stat = atk_stat
-    #     self.poke_img = poke_img
-    #     self.ability = ability
+# def __init__(self, name, hp_stat, def_stat, atk_stat, poke_img, ability):
+#     self.poke_img = poke_img
+#     self.name = name
+#     self.ability = ability
+#     self.hp_stat = hp_stat
+#     self.atk_stat = atk_stat
+#     self.def_stat = def_stat
+    

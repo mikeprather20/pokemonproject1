@@ -7,6 +7,7 @@ from .poke.routes import poke
 from .auth.routes import auth
 from .prof.routes import prof
 from .models import User
+#from .models import Pokemon
 
 app = Flask(__name__)
 login = LoginManager()
@@ -26,6 +27,8 @@ from .models import db
 db.init_app(app)
 migrate = Migrate(app,db)
 login.init_app(app)
+
+login.login_view = 'auth.logIn'
 
 from . import routes
 from . import models

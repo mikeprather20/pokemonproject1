@@ -4,4 +4,17 @@
 
   <h1>EDIT PROFILE!</h1>
 
+  <form class="container" method="POST">
+
+    {{ form.hidden_tag() }}
+
+    {{ form.first_name(class='form-control', placeholder='first name') }}
+    {{ form.last_name(class='form-control', placeholder='last name' )}}
+    {{ form.email(class='form-control', placeholder='email') }}
+    {{ form.password(class='form-control', placeholder='password') }}
+    {{ form.confirm_password(class='form-control', placeholder='confirm password') }}
+    {{ form.submit(class='btn btn-primary') }}
+    
+</form>
+
 {% endblock %}
