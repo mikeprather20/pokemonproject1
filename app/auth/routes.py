@@ -60,7 +60,7 @@ def register():
             db.session.add(user)
             db.session.commit()
             flash("Successfully registered.", 'success')
-            return redirect(url_for('poke.logIn'))
+            return redirect(url_for('auth.logIn'))
         else:
             flash('Please fill in all requirements!', 'danger')
     return render_template('register.html', form = form)
