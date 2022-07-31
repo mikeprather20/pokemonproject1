@@ -6,14 +6,14 @@ from werkzeug.security import check_password_hash
 
 from app.models import User
 
-user = Blueprint('user', __name__, template_folder='usertemplates')
+auth = Blueprint('auth', __name__, template_folder='authtemplates')
 
 from app.models import db
 
 ##########################################################################
 
 
-@user.route('/login',methods = ["GET","POST"] )
+@auth.route('/login',methods = ["GET","POST"] )
 def logIn():
     form = LoginForm()
     if request.method == "POST":
@@ -33,7 +33,7 @@ def logIn():
     return render_template('login.html', form=form)
 
 
-@user.route('/logout')
+@auth.route('/logout')
 def logOut():
     flash("You logged out.", 'success')
     logout_user()
@@ -44,7 +44,7 @@ def logOut():
 ##############################################################
 
 
-@user.route('/register', methods=["GET", "POST"])
+@auth.route('/register', methods=["GET", "POST"])
 def register():
     form = UserRegistrationForm()
     if request.method == "POST":
@@ -67,7 +67,7 @@ def register():
 
 ##########################################################################
 
-@user.route('/profile')
+@auth.route('/profile')
 def userProfile():
     return render_template('profile.html')
 
@@ -75,7 +75,7 @@ def userProfile():
 ##########################################################################
 
 
-@user.route('/editprofile')
+@auth.route('/editprofile')
 def editProfile():
     return render_template('editprofile.html')
 
