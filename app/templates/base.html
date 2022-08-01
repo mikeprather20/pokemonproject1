@@ -7,12 +7,12 @@
 <meta name="Description" content="Enter your description here"/>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-<link rel="stylesheet" href="../static/css/main.css">
-{% block css %}
+<link rel="stylesheet" href=" {{ url_for('static', filename = 'main.css') }}">
 
-{% endblock %}
 <title>PokemonFlask</title>
+
 </head>
+
 <nav class="nav">
     <a class="nav-link" href="/">Home</a>
     <a class="nav-link" href="/pokemon">Pick Pokemon</a>
@@ -21,7 +21,9 @@
     <a class="nav-link" href="/profile">Profile</a>
     <a class="nav-link" href="/editprofile">Edit Profile</a>
   </nav>
+  
 <body>
+
     {% block content %}
 
 

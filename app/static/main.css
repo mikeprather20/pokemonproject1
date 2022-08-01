@@ -1,0 +1,18 @@
+#homepage {
+    background-image: url("https://assets.reedpopcdn.com/pokemon_MJe1ytj.jpg/BROK/resize/1920x1920%3E/format/jpg/quality/80/pokemon_MJe1ytj.jpg");
+    background-size: cover;
+}
+
+#rumble {
+    position: relative;
+    justify-content: center;
+    height: 300px;
+    width: 700px;
+}
+
+#poke-background{
+    background-image: url("https://wallpaperaccess.com/full/5818333.jpg");
+    background-size:cover;
+    height: 500px;
+}
+

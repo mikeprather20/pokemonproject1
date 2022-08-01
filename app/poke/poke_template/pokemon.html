@@ -1,42 +1,44 @@
 {% extends 'base.html' %}
-  
+
 {% block content %}
 
-<h1>POKEMON!</h1>
-<br>
+<body id=poke-background>
+  <h1>CHOOSE YOUR POKEMON!</h1>
+  <br>
 
-<form class="container" method="POST">
+
+  <form class="container" method="POST">
 
     {{ form.hidden_tag() }}
     {{ form.name(class='form-control', placeholder='Pokemon Name') }}
-<br>
+    <br>
     {{ form.submit(class='btn btn-primary') }}
 
-</form>
+  </form>
 
-<br>
-{% if pokemon %}
+  <br>
+  {% if pokemon %}
 
-<div class="card" style="width: 18rem;">
-  <img src="{{ pokemon.img_url }}" class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">{{ pokemon.name.title() }}</h5>
-    <p class="card-text">
-        <ul>
-          <li>
-            Ability: {{ pokemon.ability.title() }}
-            <br>
-            HP: {{ pokemon.hp }}
-            <br>
-            ATK: {{ pokemon.attack }}
-            <br>
-            DEF: {{ pokemon.defense }}
-          </li>
-        </ul>
-    </p>
+  <div class="card" style="width: 18rem;">
+    <img src="{{ pokemon.img_url }}" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">{{ pokemon.name.title() }}</h5>
+      <p class="card-text">
+      <ul>
+        <li>
+          Ability: {{ pokemon.ability.title() }}
+          <br>
+          HP: {{ pokemon.hp }}
+          <br>
+          ATK: {{ pokemon.attack }}
+          <br>
+          DEF: {{ pokemon.defense }}
+        </li>
+      </ul>
+      </p>
+    </div>
   </div>
-</div>
 
-{% endif %}
-
+  {% endif %}
+</body>
 {% endblock %}
