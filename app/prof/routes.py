@@ -29,7 +29,7 @@ def editProfile():
 
             user = User( username, first_name, last_name, email, password)
 
-            db.session.update()
+            db.session.update(user)
             db.session.commit()
             flash("Profile changed.", 'success')
         return redirect(url_for('prof.editProfile'))
