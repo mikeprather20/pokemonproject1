@@ -1,8 +1,18 @@
+from sys import ps1, ps2
 from flask_login import UserMixin
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash
 
 db = SQLAlchemy()
+
+
+
+
+class My5(db.Model):
+    pokemon_id = db.Column(db.Integer, db.ForeignKey('pokemon.id'), primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), primary_key=True)
+
+
 
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
@@ -11,7 +21,12 @@ class User(db.Model, UserMixin):
     last_name = db.Column(db.String(150), nullable=False)
     email = db.Column(db.String(150), nullable=False, unique=True)
     password = db.Column(db.String(250), nullable=False)
-    #team =
+    team = db.relationship(
+        'Pokemon',
+        secondaryjoin = 'My5',
+        backref= 'Users',        
+        lazy='dynamic'
+    )
 
     def __init__(self, username, first_name, last_name,  email, password):
         self.username = username
@@ -24,14 +39,14 @@ class User(db.Model, UserMixin):
         #make a table to link the Pokemon to the User they belong too
         #update your db with flask db migrate flask db upgrade
 
-#class Pokemon(db.Model):
-    # id = db.Column(db.Integer, primary_key=True)
-    # poke_img = db.Column(db.String(300))
-    # name = db.Column(db.String(50)
-    # ability = db.Column(db.String(50))
-    # hp_stat = db.Column(db.Integer)
-    # atk_stat = db.Column(db.Integer)
-    # def_stat = db.Column(db.Integer)
+class Pokemon(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    poke_img = db.Column(db.String(300))
+    name = db.Column(db.String(50))
+    ability = db.Column(db.String(50))
+    hp_stat = db.Column(db.Integer)
+    atk_stat = db.Column(db.Integer)
+    def_stat = db.Column(db.Integer)
     
 
 # def __init__(self, name, hp_stat, def_stat, atk_stat, poke_img, ability):
