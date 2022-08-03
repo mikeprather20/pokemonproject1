@@ -6,8 +6,10 @@ from flask_login import LoginManager
 from .poke.routes import poke
 from .auth.routes import auth
 from .prof.routes import prof
+
 from .models import User
-#from .models import Pokemon
+from .models import Pokemon
+from .models import My5
 
 app = Flask(__name__)
 login = LoginManager()

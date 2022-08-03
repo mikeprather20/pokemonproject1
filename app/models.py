@@ -1,12 +1,8 @@
-from sys import ps1, ps2
 from flask_login import UserMixin
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash
 
 db = SQLAlchemy()
-
-
-
 
 class My5(db.Model):
     pokemon_id = db.Column(db.Integer, db.ForeignKey('pokemon.id'), primary_key=True)
@@ -35,10 +31,6 @@ class User(db.Model, UserMixin):
         self.email = email
         self.password = generate_password_hash(password)
 
-        #make a table to hold the poke data (add an id field as a primary key)
-        #make a table to link the Pokemon to the User they belong too
-        #update your db with flask db migrate flask db upgrade
-
 class Pokemon(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     poke_img = db.Column(db.String(300))
@@ -49,11 +41,11 @@ class Pokemon(db.Model):
     def_stat = db.Column(db.Integer)
     
 
-# def __init__(self, name, hp_stat, def_stat, atk_stat, poke_img, ability):
-#     self.poke_img = poke_img
-#     self.name = name
-#     self.ability = ability
-#     self.hp_stat = hp_stat
-#     self.atk_stat = atk_stat
-#     self.def_stat = def_stat
+    def __init__(self, name, hp_stat, def_stat, atk_stat, poke_img, ability):
+        self.poke_img = poke_img
+        self.name = name
+        self.ability = ability
+        self.hp_stat = hp_stat
+        self.atk_stat = atk_stat
+        self.def_stat = def_stat
     
