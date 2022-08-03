@@ -33,3 +33,14 @@ def pokedex():
 
 
 ##############################################################
+
+
+#catch searched pokemon
+
+#append search? to what? team? upload team? models not working, team not available.
+
+##############################################################
+
+#find user
+
+#battle

@@ -9,7 +9,6 @@ class My5(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), primary_key=True)
 
 
-
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(150), nullable=False, unique=True)
@@ -19,8 +18,8 @@ class User(db.Model, UserMixin):
     password = db.Column(db.String(250), nullable=False)
     team = db.relationship(
         'Pokemon',
-        secondaryjoin = 'My5',
-        backref= 'Users',        
+        secondary = 'my5',
+        backref= 'users',        
         lazy='dynamic'
     )
 
@@ -30,6 +29,7 @@ class User(db.Model, UserMixin):
         self.last_name = last_name
         self.email = email
         self.password = generate_password_hash(password)
+
 
 class Pokemon(db.Model):
     id = db.Column(db.Integer, primary_key=True)
