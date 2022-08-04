@@ -6,3 +6,5 @@ class PokemonFinderForm(FlaskForm):
     name = StringField("Pokemon Name", validators = [DataRequired()])
     submit = SubmitField()
 
+class CatchForm(FlaskForm):
+    submit = SubmitField()

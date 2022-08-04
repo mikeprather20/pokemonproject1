@@ -11,7 +11,7 @@ from app.models import db
 @poke.route('/pokemon', methods = ['GET', 'POST'])
 def pokedex():
     form = PokemonFinderForm()
-    my_dict = {}
+    poke_dict = {}
 
     if request.method == "POST":
         poke_name = form.name.data
@@ -20,7 +20,7 @@ def pokedex():
         res = requests.get(url)
         if res.ok:
             data = res.json()
-            my_dict = {
+            poke_dict = {
                 'name': data['name'],
                 'ability': data['abilities'][0]['ability']['name'],
                 'img_url': data['sprites']['front_shiny'],
@@ -29,7 +29,7 @@ def pokedex():
                 'defense': data['stats'][2]['base_stat']
             }
 
-    return render_template('pokemon.html', form = form, pokemon = my_dict)
+    return render_template('pokemon.html', form = form, pokemon = poke_dict)
 
 
 ##############################################################
@@ -37,7 +37,7 @@ def pokedex():
 
 #catch searched pokemon
 
-#append search? to what? team? upload team? models not working, team not available.
+#append search? to what? team? upload team?
 
 ##############################################################
 
