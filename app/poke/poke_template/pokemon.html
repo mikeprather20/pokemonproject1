@@ -37,7 +37,8 @@
       </ul>
       </p>
       <form>
-        <a type="button" class="btn btn-warning" href="">Catch this Pokemon!</a>
+        {{ form.hidden_tag() }}
+        {{ form.submit(class='btn btn-warning', value ="Catch this Pokemon!") }}
       </form>
       
     </div>
