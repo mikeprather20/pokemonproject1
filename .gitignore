@@ -1,4 +1,4 @@
 .env
 __pycache__
-pokemon_venv
+my_venv
 migrations
