@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<body id=poke-background>
+<body id=poke-background></body>
   <h1>CATCH YOUR POKEMON!</h1>
   <br>
 
@@ -24,26 +24,21 @@
       <h5 class="card-title">{{ poke_dict.name.title() }}</h5>
       <p class="card-text">
         <br>
-        Ability: {{poke_dict.ability.title() }}
+        Ability: {{ poke_dict.ability.title() }}
       <ul>
-          HP: {{ poke_dict.hp }}
-          <br>
-          ATK: {{ poke_dict.attack }}
-          <br>
-          DEF: {{ poke_dict.defense }}
+        HP: {{ poke_dict.hp }}
+        <br>
+        ATK: {{ poke_dict.attack }}
+        <br>
+        DEF: {{ poke_dict.defense }}
       </ul>
       </p>
-        {{% if flag %}}
-        <a type="button" class="btn btn-primary" href="/catch/{{poke_dict.name}}">Already Caught! Release Pokemon?</a>
-        {{% else %}}
-        <a type="button" class="btn btn-warning" href="/catch/{{poke_dict.name}}">Catch Pokemon!</a>
-        {{% endif %}}
+      {% if caught %}
+      <a type="button" class="btn btn-primary" href="/release/{{poke_dict.name}}">Already Caught! Release Pokemon?</a>
+      {% else %}
+      <a type="button" class="btn btn-warning" href="/catch/{{poke_dict.name}}">Catch Pokemon!</a>
+      {% endif %}
     </div>
   </div>
-
   {% endif %}
-
-
-
-</body>
 {% endblock %}
