@@ -74,3 +74,21 @@ def user_team():
     return render_template('myteam.html', team=team)
 
 ##############################################################
+#get all users from user db
+@poke.route('/battle', methods=['GET'])
+def get_users(username):
+    pass
+
+##############################################################
+#battle picked user
+@poke.route('/battle/<string:username>', methods=['GET', 'POST'])
+def battle_user():
+    pass
+
+##############################################################
+# @app.route('/battle/<string:opponent>')
+# def battle(opponent):
+#     op = User.query(name=oppoent)
+#     op.team.all()
+#     current_user.team.all()
+    
