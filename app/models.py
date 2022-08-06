@@ -4,9 +4,6 @@ from werkzeug.security import generate_password_hash
 
 db = SQLAlchemy()
 
-# class My5(db.Model):
-#     pokemon_id = db.Column(db.Integer, db.ForeignKey('pokemon.id'), primary_key=True)
-#     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), primary_key=True)
 my5 = db.Table('my5',
     db.Column('user_id', db.Integer, db.ForeignKey('user.id')),
     db.Column('pokemon_id', db.Integer, db.ForeignKey('pokemon.id')),

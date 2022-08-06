@@ -8,7 +8,7 @@
 <div class="row">
   {% for p in team %}
   <div class="card" style="width: 18rem;">
-    <img src="{{ p.img }}" class="card-img-top" alt="...">
+    <img src="{{ p.img_url }}" class="card-img-top" alt="...">
     <div class="card-body">
       <h5 class="card-title">{{ p.name.title() }}</h5>
       <p class="card-text">
@@ -25,8 +25,9 @@
       <a href="/release/{{ p.name }}" class="btn btn-primary">Release</a>
     </div>
   </div>
-  <br>
   {% endfor %}
+
 </div>
 
 {% endblock %}
+<br>

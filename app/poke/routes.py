@@ -31,21 +31,15 @@ def pokedex():
                 'defense': data['stats'][2]['base_stat']
             }
 
-            img = data['sprites']['front_shiny']
-            name = data['name']
-            ability = data['abilities'][0]['ability']['name']
-            hp = data['stats'][0]['base_stat']
-            attack = data['stats'][1]['base_stat']
-            defense = data['stats'][2]['base_stat']
-
             pokemon = Pokemon.query.filter_by(name=poke_dict['name']).first()
             if not pokemon:
-                pokemon = Pokemon(img, name, ability, hp, attack, defense)
+                pokemon = Pokemon(poke_dict['img_url'], poke_dict['name'], poke_dict['ability'], poke_dict['hp'], poke_dict['attack'], poke_dict['defense'])
                 db.session.add(pokemon)
                 db.session.commit()
 
             if current_user.team.filter_by(name=pokemon.name).first():
                 caught = True
+
     return render_template('pokemon.html', form=form, poke_dict=poke_dict, caught=caught)
 
 
@@ -60,8 +54,8 @@ def catchpoke(poke_name):
     else:
         flash('Your team is FULL!', 'danger')
 
-    return redirect(url_for('poke.user_team'))  # myteam.html < im not sure about this one
-                                #^'poke.user_team' <(goes to a route)
+    return redirect(url_for('poke.pokedex'))
+
 
 ##############################################################
 
@@ -70,7 +64,7 @@ def releasepoke(poke_name):
     pokemon = Pokemon.query.filter_by(name=poke_name).first()
     current_user.team.remove(pokemon)
     db.session.commit()
-    return redirect(url_for('poke.user_team'))
+    return redirect(url_for('poke.pokedex'))
 
 ##############################################################
 
