@@ -9,7 +9,7 @@ from .prof.routes import prof
 
 
 from .models import User
-from .models import My5
+from .models import my5
 from .models import Pokemon
 
 

@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+  
+{% block content %}
+
+<body>
+    <h1>MY TEAM!</h1>
+    <br>
+    {% for p in team %}
+  
+    <div class="card" style="width: 18rem;">
+      <img src="{{ p.img }}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">{{ p.name.title() }}</h5>
+        <p class="card-text">
+            <br>
+            Ability: {{ p.ability.title() }}
+        <ul>
+            HP: {{ p.hp }}
+            <br>
+            ATK: {{ p.attack }}
+            <br>
+            DEF: {{ p.defense }}
+        </ul>
+        </p>
+          <a type="button" class="btn btn-warning" href="/release/{{pokemon_id}}">Release!</a>
+      </div>
+    </div>
+<br>
+    {% endfor %}
+  </body>
+
+{% endblock %}

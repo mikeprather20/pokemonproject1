@@ -8,45 +8,42 @@
 
 
   <form class="container" method="POST">
-
     {{ form.hidden_tag() }}
-    {{ form.name(class='form-control', placeholder='Pokemon Name') }}
+
+    {{ form.poke_name(class='form-control', placeholder='Search for Pokemon by Name') }}
     <br>
     {{ form.submit(class='btn btn-primary') }}
-
   </form>
 
   <br>
-  {% if pokemon %}
+  {% if poke_dict %}
 
   <div class="card" style="width: 18rem;">
-    <img src="{{ pokemon.img_url }}" class="card-img-top" alt="...">
+    <img src="{{ poke_dict.img }}" class="card-img-top" alt="...">
     <div class="card-body">
-      <h5 class="card-title">{{ pokemon.name.title() }}</h5>
+      <h5 class="card-title">{{ poke_dict.name.title() }}</h5>
       <p class="card-text">
+        <br>
+        Ability: {{poke_dict.ability.title() }}
       <ul>
-        <li>
-          Ability: {{ pokemon.ability.title() }}
+          HP: {{ poke_dict.hp }}
           <br>
-          HP: {{ pokemon.hp }}
+          ATK: {{ poke_dict.attack }}
           <br>
-          ATK: {{ pokemon.attack }}
-          <br>
-          DEF: {{ pokemon.defense }}
-        </li>
+          DEF: {{ poke_dict.defense }}
       </ul>
       </p>
-      <form>
-        {{ form.hidden_tag() }}
-        {{ form.submit(class='btn btn-warning', value ="Catch this Pokemon!") }}
-      </form>
-      
+        {{% if flag %}}
+        <a type="button" class="btn btn-primary" href="/catch/{{poke_dict.name}}">Already Caught! Release Pokemon?</a>
+        {{% else %}}
+        <a type="button" class="btn btn-warning" href="/catch/{{poke_dict.name}}">Catch Pokemon!</a>
+        {{% endif %}}
     </div>
   </div>
 
   {% endif %}
 
-  
+
 
 </body>
 {% endblock %}

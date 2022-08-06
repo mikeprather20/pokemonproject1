@@ -4,10 +4,13 @@ from werkzeug.security import generate_password_hash
 
 db = SQLAlchemy()
 
-class My5(db.Model):
-    pokemon_id = db.Column(db.Integer, db.ForeignKey('pokemon.id'), primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), primary_key=True)
-
+# class My5(db.Model):
+#     pokemon_id = db.Column(db.Integer, db.ForeignKey('pokemon.id'), primary_key=True)
+#     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), primary_key=True)
+my5 = db.Table('my5',
+    db.Column('user_id', db.Integer, db.ForeignKey('user.id')),
+    db.Column('pokemon_id', db.Integer, db.ForeignKey('pokemon.id')),
+)
 
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
@@ -18,7 +21,7 @@ class User(db.Model, UserMixin):
     password = db.Column(db.String(250), nullable=False)
     team = db.relationship(
         'Pokemon',
-        secondary = 'my5',
+        secondary = my5,
         backref= 'users',        
         lazy='dynamic'
     )
@@ -34,14 +37,14 @@ class User(db.Model, UserMixin):
 class Pokemon(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     poke_img = db.Column(db.String(300))
-    name = db.Column(db.String(50))
+    name = db.Column(db.String(50), unique = True)
     ability = db.Column(db.String(50))
     hp_stat = db.Column(db.Integer)
     atk_stat = db.Column(db.Integer)
     def_stat = db.Column(db.Integer)
     
 
-    def __init__(self, name, hp_stat, def_stat, atk_stat, poke_img, ability):
+    def __init__(self, poke_img, name, ability, hp_stat, atk_stat, def_stat):
         self.poke_img = poke_img
         self.name = name
         self.ability = ability
