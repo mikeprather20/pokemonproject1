@@ -53,7 +53,7 @@ def catchpoke(poke_name):
         db.session.commit()
     else:
         flash('Your team is FULL!', 'danger')
-
+        return redirect(url_for('poke.user_team'))
     return redirect(url_for('poke.pokedex'))
 
 
@@ -64,7 +64,7 @@ def releasepoke(poke_name):
     pokemon = Pokemon.query.filter_by(name=poke_name).first()
     current_user.team.remove(pokemon)
     db.session.commit()
-    return redirect(url_for('poke.pokedex'))
+    return redirect(url_for('poke.user_team'))
 
 ##############################################################
 
