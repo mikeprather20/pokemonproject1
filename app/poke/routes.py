@@ -1,4 +1,4 @@
-from app.models import db, Pokemon
+from app.models import db, Pokemon, User
 from flask import Blueprint, redirect, render_template, request, url_for, flash
 from .forms import PokemonFinderForm
 import requests
@@ -74,21 +74,32 @@ def user_team():
     return render_template('myteam.html', team=team)
 
 ##############################################################
-#get all users from user db
-@poke.route('/battle', methods=['GET'])
-def get_users(username):
-    pass
+
+# search for users
+@poke.route('/battle')
+def finduser():
+    users = User.query.all()
+    return render_template('battle.html',  users=users)
+
 
 ##############################################################
-#battle picked user
-@poke.route('/battle/<string:username>', methods=['GET', 'POST'])
-def battle_user():
-    pass
-
-##############################################################
-# @app.route('/battle/<string:opponent>')
-# def battle(opponent):
-#     op = User.query(name=oppoent)
-#     op.team.all()
-#     current_user.team.all()
-    
+# attack user
+@poke.route('/battle/<int:id>', methods=['GET'])
+def battle(id):
+    user = User.query.get(id)
+    myteam = current_user.team.all()
+    userteam = user.team.all()
+    attackoutput = int(Pokemon.atk_stat) * 5
+    if int(myteam.attackoutput()) > int(userteam.attackoutput()):
+        current_user.wins += 1
+        db.session.commit()
+        flash('You win!', 'success')
+    elif int(myteam.attackoutput()) < int(userteam.attackoutput()):
+        current_user.losses += 1
+        db.sesson.commit()
+        flash('You Lose!', 'danger')
+    else:
+        flash("Tie!", 'warning')
+        return redirect(url_for('poke.finduser'))
+    return redirect(url_for('poke.finduser'))
+# add W/L to table
